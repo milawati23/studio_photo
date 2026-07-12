@@ -15,6 +15,14 @@
                     <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </flux:sidebar.item>
+
+                    <flux:sidebar.item icon="tag" :href="route('category.index')" :current="request()->routeIs('category.index')" wire:navigate class="hover:!bg-white/10 !text-black transition rounded-xl">
+                        {{ __('Categories') }}
+                    </flux:sidebar.item>
+
+                    <flux:sidebar.item icon="tag" :href="route('service.index')" :current="request()->routeIs('service.index')" wire:navigate class="hover:!bg-white/10 !text-black transition rounded-xl">
+                        {{ __('Services') }}
+                    </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 
