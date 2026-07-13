@@ -12,7 +12,7 @@ new class extends Component
     #[Computed]
     public function categories()
     {
-        return Category::latest()->paginate(10);
+        return Category::latest('category_id')->paginate(10);
     }
 
     public function edit($id){
@@ -47,7 +47,7 @@ new class extends Component
 
             <flux:table.rows>
                 @foreach ($this->categories as $category)
-                    <flux:table.row :key="$category->id">
+                    <flux:table.row :key="$category->category_id">
 
                         <flux:table.cell>
                             {{ $loop->iteration + ($this->categories->firstItem() - 1) }}
@@ -70,12 +70,12 @@ new class extends Component
                                 <flux:button variant="ghost" size="sm" icon="ellipsis-horizontal" inset="top bottom"></flux:button>
 
                                 <flux:menu>
-                                    <flux:menu.item icon="pencil" wire:click="edit({{ $category->id }})">Edit</flux:menu.item>
+                                    <flux:menu.item icon="pencil" wire:click="edit({{ $category->category_id }})">Edit</flux:menu.item>
 
                                     <flux:menu.separator />
 
-                                    {{-- <flux:menu.item variant="danger" icon="trash" wire:click="$dispatch('confirm-delete', id: $category->id)">Delete</flux:menu.item> --}}
-                                    <flux:menu.item variant="danger" icon="trash" wire:click="$dispatch('confirm-delete', {id: {{ $category->id }}})">Delete</flux:menu.item>
+                                    {{-- <flux:menu.item variant="danger" icon="trash" wire:click="$dispatch('confirm-delete', id: $category->category_id)">Delete</flux:menu.item> --}}
+                                    <flux:menu.item variant="danger" icon="trash" wire:click="$dispatch('confirm-delete', {id: {{ $category->category_id }}})">Delete</flux:menu.item>
                                 </flux:menu>
                             </flux:dropdown>
                         </flux:table.cell>

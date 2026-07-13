@@ -12,7 +12,8 @@ class Service extends Model
 
     // Menentukan nama tabel di database
     protected $table = 'services';
-    protected $primaryKey = 'service_id';
+    protected $primaryKey = 'service_id'; // Kunci primary custom
+    protected $primarykey = 'category_id';
 
     public $incrementing = true;
 
@@ -28,6 +29,6 @@ class Service extends Model
     {
         // Parameter ke-2 adalah foreign_key di tabel ini
         // Parameter ke-3 adalah owner_key (primary key) di tabel Category
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+        return $this->belongsTo(Category::class, 'category_id', 'category_id');
     }
 }

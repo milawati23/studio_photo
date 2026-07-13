@@ -10,6 +10,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('category.index');
     Route::livewire('/services', 'pages::service.index')
         ->name('service.index');
+    Route::livewire('/customers', 'pages::customer.index')
+        ->name('customer.index');
+    Route::livewire('/transactions', 'pages::transaction.index')
+        ->name('transaction.index');
 });
 
 require __DIR__.'/settings.php';

@@ -85,7 +85,7 @@ new class extends Component
 
                         {{-- Waktu Dibuat --}}
                         <flux:table.cell class="whitespace-nowrap">
-                            {{ $service->created_at->diffForHumans() }}
+                            {{ $service->created_at?->diffForHumans() ?? '-' }}
                         </flux:table.cell>
 
                         {{-- Menu dropdown aksi --}}

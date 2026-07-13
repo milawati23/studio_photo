@@ -20,8 +20,16 @@
                         {{ __('Categories') }}
                     </flux:sidebar.item>
 
-                    <flux:sidebar.item icon="tag" :href="route('service.index')" :current="request()->routeIs('service.index')" wire:navigate class="hover:!bg-white/10 !text-black transition rounded-xl">
+                    <flux:sidebar.item icon="briefcase" :href="route('service.index')" :current="request()->routeIs('service.index')" wire:navigate class="hover:!bg-white/10 !text-black transition rounded-xl">
                         {{ __('Services') }}
+                    </flux:sidebar.item>
+
+                    <flux:sidebar.item icon="user" :href="route('customer.index')" :current="request()->routeIs('customer.index')" wire:navigate class="hover:!bg-white/10 !text-black transition rounded-xl">
+                        {{ __('Customers') }}
+                    </flux:sidebar.item>
+
+                    <flux:sidebar.item icon="receipt-percent" :href="route('transaction.index')" :current="request()->routeIs('transaction.index')" wire:navigate class="hover:!bg-white/10 !text-black transition rounded-xl">
+                        {{ __('Transactions') }}
                     </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>

@@ -29,7 +29,7 @@ class ServiceForm extends Form
             ],
             'category_id' => [
                 'required',
-                'exists:categories,id', // Memastikan kategori yang dipilih ada di DB
+                'exists:categories,category_id', // Memastikan kategori yang dipilih ada di DB
             ],
             'price' => [
                 'required',

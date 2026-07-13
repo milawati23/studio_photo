@@ -61,7 +61,7 @@ new class extends Component
                 {{-- Field 2: Dropdown Pilihan Kategori --}}
                 <flux:select label="Category" placeholder="Select category..." wire:model="form.category_id">
                     @foreach($this->categories as $category)
-                        <flux:select.option value="{{ $category->id }}">{{ $category->name }}</flux:select.option>
+                        <flux:select.option value="{{ $category->category_id }}">{{ $category->name }}</flux:select.option>
                     @endforeach
                 </flux:select>
 

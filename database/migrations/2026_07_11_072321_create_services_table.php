@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id('service_id'); // bigint, Primary Key
             $table->string("service_name"); // Nama layanan (string)
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained('categories', 'category_id')->onDelete('cascade');
             $table->decimal("price", 10, 2); // Harga (decimal) dengan 2 angka di belakang koma
             $table->text("description")->nullable(); // Deskripsi layanan (boleh kosong)
             $table->timestamps(); // created_at dan updated_at
