@@ -13,6 +13,7 @@ class Service extends Model
     // Menentukan nama tabel di database
     protected $table = 'services';
     protected $primaryKey = 'service_id'; // Kunci primary custom
+   
     protected $primarykey = 'category_id';
 
     public $incrementing = true;
