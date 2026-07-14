@@ -31,6 +31,14 @@
                     <flux:sidebar.item icon="receipt-percent" :href="route('transaction.index')" :current="request()->routeIs('transaction.index')" wire:navigate class="hover:!bg-white/10 !text-black transition rounded-xl">
                         {{ __('Transactions') }}
                     </flux:sidebar.item>
+
+                    <flux:sidebar.item icon="receipt-percent" :href="route('transaction_detail.index')" :current="request()->routeIs('transaction_detail.index')" wire:navigate class="hover:!bg-white/10 !text-black transition rounded-xl">
+                        {{ __('Transaction Details') }}
+                    </flux:sidebar.item>
+
+                    <flux:sidebar.item icon="currency-dollar" :href="route('payment.index')" :current="request()->routeIs('payment.index')" wire:navigate class="hover:!bg-white/10 !text-black transition rounded-xl">
+                        {{ __('Payments') }}
+                    </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 
