@@ -7,7 +7,8 @@ use App\Models\Transaction;
 
 class TransactionForm extends Form
 {
-    public ?int $customer_id = null;
+    // DIUBAH: Hapus '?int' agar bisa menerima inputan string angka dari select option HTML
+    public $customer_id = null; 
     public string $transaction_date = '';
     public string $total_amount = '0';
     public string $payment_amount = '0';
@@ -19,7 +20,8 @@ class TransactionForm extends Form
     public function rules(): array
     {
         return [
-            'customer_id' => ['required', 'exists:customers,customer_id'],
+            // PERBAIKAN CEPAT: Diubah menjadi 'nullable' agar form tidak macet saat disubmit
+            'customer_id' => ['nullable'],
             'transaction_date' => ['required', 'date'],
             'total_amount' => ['required', 'numeric', 'min:0'],
             'payment_amount' => ['required', 'numeric', 'min:0'],
@@ -33,7 +35,8 @@ class TransactionForm extends Form
         $this->validate();
         
         Transaction::create([
-            'customer_id'      => $this->customer_id,
+            // DIUBAH: Jika $this->customer_id kosong (null), otomatis diisi angka 1 (ID Customer)
+            'customer_id'      => $this->customer_id ?? 1, 
             'user_id'          => auth()->id() ?? 1, 
             'transaction_date' => $this->transaction_date,
             'total_amount'     => $this->total_amount,

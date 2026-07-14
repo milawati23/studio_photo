@@ -1,6 +1,7 @@
 <?php
 
 use Livewire\Component;
+use Livewire\Attributes\Computed; 
 use App\Livewire\Forms\ServiceForm;
 use App\Models\Category;
 
@@ -9,8 +10,9 @@ new class extends Component
     // Gunakan ServiceForm yang sudah dibuat sebelumnya
     public ServiceForm $form;
     
-    // Fungsi untuk mengambil semua data kategori untuk isi select option
-    public function getCategoriesProperty()
+    // Menggunakan atribut #[Computed] agar bisa dipanggil lewat $this->categories di Blade
+    #[Computed]
+    public function categories()
     {
         return Category::all();
     }
@@ -59,7 +61,8 @@ new class extends Component
                 />
 
                 {{-- Field 2: Dropdown Pilihan Kategori --}}
-                <flux:select label="Category" placeholder="Select category..." wire:model="form.category_id">
+                {{-- PERBAIKAN: Ditambahkan .number dan menggunakan nama kolom category_id --}}
+                <flux:select label="Category" placeholder="Select category..." wire:model.number="form.category_id">
                     @foreach($this->categories as $category)
                         <flux:select.option value="{{ $category->category_id }}">{{ $category->name }}</flux:select.option>
                     @endforeach
