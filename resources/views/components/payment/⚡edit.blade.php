@@ -52,13 +52,12 @@ new class extends Component
             </div>
 
             <flux:separator />
-
-            <!-- Pilihan Transaksi -->
+                <!-- Pilihan Transaksi -->
             <flux:select wire:model="form.transaction_id" label="Transaction" placeholder="Choose a transaction...">
                 <option value="">-- Select Transaction --</option>
                 @foreach($this->transactions as $tx)
                     <option value="{{ $tx->transaction_id }}">
-                        #{{ $tx->transaction_id }} - {{ $tx->transaction_date->format('d/m/Y') }} (Rp {{ number_format($tx->total_amount, 0, ',', '.') }})
+                        #{{ $tx->transaction_id }} - {{ \Carbon\Carbon::parse($tx->transaction_date)->format('d/m/Y') }} (Rp {{ number_format($tx->total_amount, 0, ',', '.') }})
                     </option>
                 @endforeach
             </flux:select>

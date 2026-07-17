@@ -44,9 +44,10 @@ new class extends Component
                 <option value="">-- Select Transaction --</option>
                 @foreach($this->transactions as $tx)
                     <option value="{{ $tx->transaction_id }}">
-                        #{{ $tx->transaction_id }} - {{ $tx->transaction_date->format('d/m/Y') }} (Rp {{ number_format($tx->total_amount, 0, ',', '.') }})
+                        #{{ $tx->transaction_id }} - {{ \Carbon\Carbon::parse($tx->transaction_date)->format('d/m/Y') }} (Rp {{ number_format($tx->total_amount, 0, ',', '.') }})
                     </option>
                 @endforeach
+                
             </flux:select>
 
             <!-- Metode Pembayaran -->
